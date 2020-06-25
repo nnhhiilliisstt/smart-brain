@@ -1,10 +1,21 @@
 import React, { Component } from 'react';
 import Particles from 'react-particles-js';
+import Clarifai from 'clarifai';
 import Navigation from './components/Navigation/Navigation';
 import Logo from './components/Logo/Logo';
 import ImageLinkForm from './components/ImageLinkForm/ImageLinkForm';
 import Rank from './components/Rank/Rank';
 import './App.css';
+
+
+
+
+
+const app = new Clarifai.App({
+ apiKey: 'ee2a54a5c60a4d13a669374dcaec43b7'
+});
+
+
 
 
 const particlesOptions={
@@ -37,6 +48,21 @@ onInputChange = (event) =>{
 
 }
 
+onButtonSubmit = () =>{
+  console.log('click');
+  app.models.predict(
+    "a403429f2ddf4b49b307e318f00e528b",
+    "https://samples.clarifai.com/face-det.jpg")
+    .then(
+    function(response) {
+      console.log(response);
+    },
+    function(err) {
+      // there was an error
+    }
+  );
+
+}
 
 
 
@@ -49,7 +75,9 @@ onInputChange = (event) =>{
     <Navigation/>
     <Logo/>
     <Rank/>
-    <ImageLinkForm  onInputChange={this.onInputChange}/>
+    <ImageLinkForm 
+     onInputChange={this.onInputChange} onButtonSubmit={this.onButtonSubmit}
+     />
     </div>
   );
 }
