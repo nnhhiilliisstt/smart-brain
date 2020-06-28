@@ -25,11 +25,8 @@ const particlesOptions={
           enable: true,
           value_area:800
         }
-
-      }
-      
-    }
-  
+      } 
+    } 
 }
 
 class App extends Component {
@@ -86,15 +83,13 @@ onRouteChange = (route) =>{
   }else if (route === 'home'){
     this.setState({isSignedIn:true})
   }
-
-
-
   this.setState({route:route});
 }
 
+
   render(){
    const  {isSignedIn , imageUrl , route , box} = this.state;
-  return (
+   return (
     <div className="App">
       <Particles className='particles'
               params={particlesOptions}
@@ -109,12 +104,11 @@ onRouteChange = (route) =>{
              />
            <FaceRecognition  box={box} imageUrl={imageUrl}/>
         </div>
-       :(
+      :  (
            route === 'signin' 
           ? <Signin onRouteChange ={this.onRouteChange}/>
           :<Register onRouteChange ={this.onRouteChange}/>
-       )
-      
+          ) 
     }
     </div>
   );
