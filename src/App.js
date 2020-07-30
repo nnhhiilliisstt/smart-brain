@@ -93,7 +93,7 @@ onButtonSubmit = () =>{
 
     .then(response => {
       if(response){
-        fetch('https://pure-stream-47434.herokuapp.com:3000/image',{
+        fetch('https://pure-stream-47434.herokuapp.com/image',{
             method: 'put',
             headers: {'Content-type':'application/json'},
             body: JSON.stringify({
