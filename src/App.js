@@ -82,7 +82,7 @@ onInputChange = (event) =>{
 
 onButtonSubmit = () =>{
   this.setState({imageUrl:this.state.input});
-    fetch('http://localhost:3000/imageurl',{
+    fetch('https://pure-stream-47434.herokuapp.com/imageurl',{
       method: 'post',
       headers: {'Content-type':'application/json'},
       body: JSON.stringify({
@@ -93,7 +93,7 @@ onButtonSubmit = () =>{
 
     .then(response => {
       if(response){
-        fetch('http://localhost:3000/image',{
+        fetch('https://pure-stream-47434.herokuapp.com:3000/image',{
             method: 'put',
             headers: {'Content-type':'application/json'},
             body: JSON.stringify({
